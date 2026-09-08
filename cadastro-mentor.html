@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cadastro do Mentor</title>
+	<link rel="stylesheet" href="css/cabecalho.css">
+	<link rel="stylesheet" href="css/cadastro-mentor.css">
+	<script src="js/menu.js" defer></script>
+</head>
+<body>
+	<div class="container-cabeçalho">
+		<h1>MENTORIA LIVRE</h1>
+		<div class="container-botoes">
+			<div class="menu-wrapper">
+				<button type="button" class="btn-cadastro" id="btn-menu" aria-expanded="false" aria-controls="menu-navegacao">MENU</button>
+				<nav class="menu-navegacao" id="menu-navegacao" aria-label="Navegação principal">
+					<a href="index.html">INÍCIO</a>
+					<a href="login.html">LOGIN</a>
+					<a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
+					<a href="cadastro.html">CADASTRO DO MENTORADO</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<main class="container-cadastro-mentor">
+		<div class="lado-esquerdo">
+			<img src="assets/ChatGPT Image 31_08_2026, 09_41_18.png" alt="Ilustração da Mentoria Livre">
+		</div>
+
+		<div class="lado-direito">
+			<h2>CADASTRO DO MENTOR</h2>
+			<form>
+				<label for="nome">Nome:</label>
+				<input type="text" id="nome" name="nome" autocomplete="name" required>
+
+				<label for="area">Área de atuação:</label>
+				<input type="text" id="area" name="area" required>
+
+				<label for="email">E-mail:</label>
+				<input type="email" id="email" name="email" autocomplete="email" required>
+
+				<label for="senha">Senha:</label>
+				<input type="password" id="senha" name="senha" autocomplete="new-password" required>
+
+				<div class="botoes-mentor">
+					<a href="login.html" class="botao-finalizar">FINALIZAR</a>
+					<a href="cadastro.html" class="botao-mentorado">MENTORADO</a>
+				</div>
+			</form>
+		</div>
+	</main>
+</body>
+</html>
