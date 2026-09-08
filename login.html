@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Login</title>
+    <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js" defer></script>
+    <script src="js/menu.js" defer></script>
+</head>
+<body>
+    <div class="container-cabeçalho">
+   <h1>MENTORIA LIVRE</h1> 
+   
+   <div class="container-botoes">
+        <div class="menu-wrapper">
+            <button type="button" class="btn-cadastro" id="btn-menu" aria-expanded="false" aria-controls="menu-navegacao">MENU</button>
+            <nav class="menu-navegacao" id="menu-navegacao" aria-label="Navegação principal">
+                <a href="index.html">INÍCIO</a>
+                <a href="login.html">LOGIN</a>
+                <a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
+                <a href="cadastro.html">CADASTRO DO MENTORADO</a>
+            </nav>
+        </div>
+    </div>
+    </div>
+    <hr>
+
+
+   <div class="container-login">
+    <div class="lado-esquerdo">
+        <img src="assets/ChatGPT Image 31_08_2026, 09_41_18.png" alt="Ilustração da Mentoria Livre">
+    </div>
+
+    <div class="lado-direito">
+        <h2>LOGIN</h2>
+    <form>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha">
+        <div class="botoes-secundarios">
+            <button type="button" class="botao-formulario botao-cadastro" id="abrir-cadastro">CADASTRA-SE</button>
+            <a href="index.html" class="botao-formulario">VOLTAR</a>
+        </div>
+        <button type="submit" class="botao-enviar">ENTRAR</button>
+    </form>
+    </div>
+
+   </div>
+
+   <div class="modal-cadastro" id="modal-cadastro" aria-hidden="true">
+        <div class="janela-cadastro" role="dialog" aria-modal="true" aria-labelledby="titulo-cadastro">
+            <button type="button" class="fechar-modal" id="fechar-cadastro" aria-label="Fechar">&times;</button>
+            <h2 id="titulo-cadastro">Como você deseja participar?</h2>
+            <p>Mentor ou Mentorado?</p>
+            <div class="opcoes-cadastro">
+                <a href="cadastro-mentor.html" class="opcao-cadastro">MENTOR</a>
+                <a href="cadastro.html" class="opcao-cadastro opcao-mentorado">MENTORADO</a>
+            </div>
+        </div>
+   </div>
+
+
+</body>
+</html>

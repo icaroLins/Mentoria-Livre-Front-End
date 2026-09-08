@@ -1,0 +1,90 @@
+.container-cabeçalho{
+    display: flex;                                           /* cololca os titulos um ao lado do outro*/
+    gap: 50px;                                               /* espaçamento entre os titulos*/
+    justify-content: space-between;                          /* separa o h1 dos botoes*/
+    margin-left: 10px;
+    font-family: helvetica, sans-serif;
+    font-size: 15px;                                       /* tamanho da fonte do h1*/
+    color: black;
+    padding: 1px 10px;  
+
+}
+
+.container-botoes{
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+     padding: 1px 10px;  
+}
+
+.btn-login{
+    cursor: pointer;
+    height: 40px;
+    font-family: helvetica, sans-serif;
+    font-size: 14px;
+    color:black; 
+    border: 3px solid black;
+    background-color: white;
+    border-radius: 7px;    
+
+}
+.btn-login:hover{
+     background-color: black;
+    color: white; 
+
+}
+
+.btn-login a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn-cadastro{
+    cursor: pointer;
+    height: 40px;
+    font-family: helvetica, sans-serif;
+    font-size: 14px; 
+    color: white;
+    border: 3px solid black;
+    background-color: black;
+    border-radius: 7px;
+}
+.btn-cadastro:hover{
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+} 
+
+.btn-cadastro a{
+    color: inherit;
+    text-decoration: none;
+}
+
+hr{
+    border: none;
+    height: 2.5px;
+    background-color: black;
+    margin: 0;
+}
+
+.menu-index{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.menu ul{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 5px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
