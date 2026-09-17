@@ -7,8 +7,10 @@
 	<link rel="stylesheet" href="css/cabecalho.css">
 	<link rel="stylesheet" href="css/cadastro-mentor.css">
 	<script src="js/menu.js" defer></script>
+	<script src="js/perfilMentor.js" defer></script>
 </head>
 <body>
+	<!--- cabeçario -->
 	<div class="container-cabeçalho">
 		<h1>MENTORIA LIVRE</h1>
 		<div class="container-botoes">
@@ -18,6 +20,7 @@
 					<a href="index.html">INÍCIO</a>
 					<a href="login.html">LOGIN</a>
 					<a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
+					<a href="perfilMentor.html">PERFIL DO MENTOR</a>
 					<a href="cadastro.html">CADASTRO DO MENTORADO</a>
 				</nav>
 			</div>
@@ -32,7 +35,7 @@
 
 		<div class="lado-direito">
 			<h2>CADASTRO DO MENTOR</h2>
-			<form>
+			<form id="form-mentor">
 				<label for="nome">Nome:</label>
 				<input type="text" id="nome" name="nome" autocomplete="name" required>
 
@@ -42,11 +45,14 @@
 				<label for="email">E-mail:</label>
 				<input type="email" id="email" name="email" autocomplete="email" required>
 
+				<label for="nascimento">Data de nascimento:</label>
+				<input type="date" id="nascimento" name="nascimento" required>
+
 				<label for="senha">Senha:</label>
 				<input type="password" id="senha" name="senha" autocomplete="new-password" required>
 
 				<div class="botoes-mentor">
-					<a href="login.html" class="botao-finalizar">FINALIZAR</a>
+					<button type="submit" class="botao-finalizar">FINALIZAR</button>
 					<a href="cadastro.html" class="botao-mentorado">MENTORADO</a>
 				</div>
 			</form>

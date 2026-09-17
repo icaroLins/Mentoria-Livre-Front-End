@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Mentor</title>
+    <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/perfilMentor.css">
+    <script src="js/menu.js" defer></script>
+    <script src="js/perfilMentor.js" defer></script>
+</head>
+<body>
+    <!--- cabeçario -->
+	<div class="container-cabeçalho">
+		<h1>MENTORIA LIVRE</h1>
+		<div class="container-botoes">
+			<div class="menu-wrapper">
+				<button type="button" class="btn-cadastro" id="btn-menu" aria-expanded="false" aria-controls="menu-navegacao">MENU</button>
+				<nav class="menu-navegacao" id="menu-navegacao" aria-label="Navegação principal">
+					<a href="index.html">INÍCIO</a>
+					<a href="login.html">LOGIN</a>
+					<a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
+					<a href="perfilMentor.html">PERFIL DO MENTOR</a>
+					<a href="cadastro.html">CADASTRO DO MENTORADO</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<main class="container-perfil">
+		<div class="parte-superior">
+			<div class="foto-wrapper">
+				<div class="foto-perfil" id="fotoPerfil" aria-label="Foto de perfil"></div>
+				<input type="file" id="input-foto" accept="image/*" hidden>
+				<label for="input-foto" class="btn-editar-foto">Editar foto</label>
+			</div>
+			<h1>MEU PERFIL</h1>
+			<aside class="info-mentor" id="infoMentor" aria-live="polite"></aside>
+		</div>
+
+		<div class="botoes-acoes">
+			<button type="button" class="btn-acao btn-voltar">VOLTAR</button>
+			<button type="button" class="btn-acao btn-vagas">CRIAR VAGAS</button>
+			<button type="button" class="btn-acao btn-editar-dados" id="btnEditarDados">EDITAR</button>
+		</div>
+		<div class="parte-inferior"></div>
+	</main>
+
+	<div class="modal-editar hidden" id="modalEditar" aria-hidden="true">
+		<div class="modal-conteudo">
+			<h2>Editar perfil</h2>
+			<form id="formEditarPerfil">
+				<label for="editarNome">Nome</label>
+				<input type="text" id="editarNome" name="nome">
+
+				<label for="editarArea">Área de atuação</label>
+				<input type="text" id="editarArea" name="area">
+
+				<label for="editarEmail">E-mail</label>
+				<input type="email" id="editarEmail" name="email">
+
+				<label for="editarNascimento">Data de nascimento</label>
+				<input type="date" id="editarNascimento" name="nascimento">
+
+				<div class="modal-botoes">
+					<button type="submit" class="btn-salvar">Salvar</button>
+					<button type="button" class="btn-cancelar" id="cancelarEdicao">Cancelar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+    
+</body>
+</html>
