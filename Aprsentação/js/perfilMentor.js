@@ -1,3 +1,4 @@
+// Função para formatar a data no padrão brasileiro.
 function formatarData(data) {
     if (!data) return 'Data não informada';
 
@@ -9,6 +10,7 @@ function formatarData(data) {
     }).format(dataObj);
 }
 
+// Função da foto: troca a imagem de perfil quando o usuário escolhe uma nova foto.
 const inputFoto = document.getElementById('input-foto');
 const fotoPerfil = document.getElementById('fotoPerfil');
 
@@ -33,6 +35,7 @@ if (inputFoto && fotoPerfil) {
     });
 }
 
+// Função do formulário: salva os dados do mentor e redireciona para o perfil.
 const formMentor = document.getElementById('form-mentor');
 
 if (formMentor) {
@@ -57,6 +60,7 @@ const modalEditar = document.getElementById('modalEditar');
 const formEditarPerfil = document.getElementById('formEditarPerfil');
 const cancelarEdicao = document.getElementById('cancelarEdicao');
 
+// Função para mostrar os dados do mentor na tela.
 function renderizarDadosMentor() {
     if (!infoMentor) return;
 
@@ -77,6 +81,7 @@ function renderizarDadosMentor() {
     `).join('');
 }
 
+// Função para abrir o modal de edição do perfil.
 function abrirModalEdicao() {
     if (!modalEditar || !formEditarPerfil) return;
 
@@ -91,6 +96,7 @@ function abrirModalEdicao() {
     modalEditar.setAttribute('aria-hidden', 'false');
 }
 
+// Função para fechar o modal de edição.
 function fecharModalEdicao() {
     if (!modalEditar) return;
 
