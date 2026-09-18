@@ -1,3 +1,4 @@
+// Função do menu: abre/fecha o menu de navegação.
 const botaoMenu = document.querySelector('#btn-menu');
 const menuNavegacao = document.querySelector('#menu-navegacao');
 
