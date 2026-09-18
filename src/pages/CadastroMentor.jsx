@@ -29,6 +29,34 @@ export function CadastroMentor() {
             <input type="email" id="mentor-email" name="email" autoComplete="email" required />
             <label htmlFor="mentor-senha">Senha:</label>
             <input type="password" id="mentor-senha" name="senha" autoComplete="new-password" required />
+            <fieldset className="dados-vaga">
+              <legend>VAGA DE MENTORIA</legend>
+              <label htmlFor="vaga-titulo">Título da vaga:</label>
+              <input type="text" id="vaga-titulo" name="vaga-titulo" required />
+              <label htmlFor="vaga-descricao">Descrição:</label>
+              <textarea id="vaga-descricao" name="vaga-descricao" rows="4" required />
+              <div className="campos-vaga">
+                <div>
+                  <label htmlFor="vaga-data-hora">Data e horário:</label>
+                  <input type="datetime-local" id="vaga-data-hora" name="vaga-data-hora" required />
+                </div>
+                <div>
+                  <label htmlFor="vaga-status">Status:</label>
+                  <select id="vaga-status" name="vaga-status" defaultValue="disponivel" required>
+                    <option value="disponivel">Disponível</option>
+                    <option value="indisponivel">Indisponível</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="vaga-min-pessoas">Mínimo de pessoas:</label>
+                  <input type="number" id="vaga-min-pessoas" name="vaga-min-pessoas" min="1" required />
+                </div>
+                <div>
+                  <label htmlFor="vaga-max-pessoas">Máximo de pessoas:</label>
+                  <input type="number" id="vaga-max-pessoas" name="vaga-max-pessoas" min="1" required />
+                </div>
+              </div>
+            </fieldset>
             <div className="botoes-mentor">
               <button type="submit" className="botao-finalizar">FINALIZAR</button>
               <Link to="/cadastro" className="botao-mentorado">MENTORADO</Link>

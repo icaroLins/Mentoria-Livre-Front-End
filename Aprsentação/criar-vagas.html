@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoria Livre</title>
+    <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/criar-vagas.css">
+    <script src="js/menu.js" defer></script>
+</head>
+<body>
+     <div class="container-cabeçalho">
+        <h1>MENTORIA LIVRE</h1>
+
+        <div class="container-botoes">
+            <div class="menu-wrapper">
+                <button type="button" class="btn-cadastro" id="btn-menu" aria-expanded="false" aria-controls="menu-navegacao">MENU</button>
+                <nav class="menu-navegacao" id="menu-navegacao" aria-label="Navegação principal">
+                    <a href="index.html">INÍCIO</a>
+                    <a href="login.html">LOGIN</a>
+                    <a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
+                    <a href="cadastro.html">CADASTRO DO MENTORADO</a>
+                    <a href="criar-vagas.html">CRIAR VAGAS</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container-criar-vagas">
+       <div class="formulario-criar-vagas">
+       
+        <h2 class="titulo-formulario">FORMULÁRIO DE CRIAÇÃO DE VAGAS</h2>
+        <form>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo">
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="aberta">Aberta</option>
+                <option value="fechada">Fechada</option>
+            </select>
+
+            <label for="quantidade">Quantidade de vagas:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" max="20">
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data">
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao"></textarea>
+
+            <div class="botoes-vagas">
+                <button type="submit" class="botao-enviar">CRIAR VAGA</button>
+                <button type="button" class="botao-menu" onclick="location.href='index.html'">MENU</button>
+            </div>
+        </form>
+
+</body>
+</html>

@@ -40,11 +40,13 @@ body {
 .container-cadastro-mentor form {
 	display: flex;
 	flex-direction: column;
-	width: min(100%, 260px);
+	width: min(100%, 360px);
 	gap: 8px;
 }
 
-.container-cadastro-mentor input {
+.container-cadastro-mentor input,
+.container-cadastro-mentor textarea,
+.container-cadastro-mentor select {
 	box-sizing: border-box;
 	width: 100%;
 	height: 34px;
@@ -53,6 +55,41 @@ body {
 	border: 1px solid black;
 	border-radius: 7px;
 	font: inherit;
+}
+
+.container-cadastro-mentor textarea {
+	height: auto;
+	padding: 8px;
+	resize: vertical;
+}
+
+.dados-vaga {
+	margin: 12px 0 8px;
+	padding: 16px;
+	border: 1px solid black;
+	border-radius: 7px;
+}
+
+.dados-vaga legend {
+	padding: 0 6px;
+	font-weight: bold;
+}
+
+.campos-vaga {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.campos-vaga > div {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.campos-vaga input,
+.campos-vaga select {
+	margin-bottom: 0;
 }
 
 .botoes-mentor {
@@ -106,5 +143,9 @@ body {
 
 	.container-cadastro-mentor .lado-esquerdo img {
 		width: min(100%, 280px);
+	}
+
+	.campos-vaga {
+		grid-template-columns: 1fr;
 	}
 }
