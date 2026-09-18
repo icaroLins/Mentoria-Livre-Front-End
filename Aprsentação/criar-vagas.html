@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/cabecalho.css">
     <link rel="stylesheet" href="css/criar-vagas.css">
     <script src="js/menu.js" defer></script>
+    <script src="js/criar-vagas.js" defer></script>
 </head>
 <body>
      <div class="container-cabeçalho">
@@ -20,7 +21,7 @@
                     <a href="login.html">LOGIN</a>
                     <a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
                     <a href="cadastro.html">CADASTRO DO MENTORADO</a>
-                    <a href="criar-vagas.html">CRIAR VAGAS</a>
+                    <a href="criar-vagas.html">CRIAR MENTORIAS</a>
                 </nav>
             </div>
         </div>
@@ -30,10 +31,10 @@
     <div class="container-criar-vagas">
        <div class="formulario-criar-vagas">
        
-        <h2 class="titulo-formulario">FORMULÁRIO DE CRIAÇÃO DE VAGAS</h2>
-        <form>
+        <h2 class="titulo-formulario">FORMULÁRIO DE CRIAÇÃO DA MENTORIA</h2>
+        <form id="formularioMentoria">
             <label for="titulo">Título:</label>
-            <input type="text" id="titulo" name="titulo">
+            <input type="text" id="titulo" name="titulo" required>
 
             <label for="status">Status:</label>
             <select id="status" name="status">
@@ -41,17 +42,17 @@
                 <option value="fechada">Fechada</option>
             </select>
 
-            <label for="quantidade">Quantidade de vagas:</label>
-            <input type="number" id="quantidade" name="quantidade" min="1" max="20">
+            <label for="quantidade">Quantidade de Alunos:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" max="20" required>
 
             <label for="data">Data:</label>
-            <input type="date" id="data" name="data">
+            <input type="date" id="data" name="data" required>
 
             <label for="descricao">Descrição:</label>
-            <textarea id="descricao" name="descricao"></textarea>
+            <textarea id="descricao" name="descricao" required></textarea>
 
             <div class="botoes-vagas">
-                <button type="submit" class="botao-enviar">CRIAR VAGA</button>
+                <button type="submit" class="botao-enviar">CRIAR MENTORIA</button>
                 <button type="button" class="botao-menu" onclick="location.href='index.html'">MENU</button>
             </div>
         </form>
