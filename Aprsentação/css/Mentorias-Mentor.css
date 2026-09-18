@@ -1,0 +1,142 @@
+body {
+	margin: 0;
+	background-color: white;
+	color: #111;
+	font-family: helvetica, sans-serif;
+}
+
+.container-mentorias {
+	width: min(100% - 40px, 920px);
+	margin: 54px auto;
+}
+
+.cabecalho-mentorias {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	margin-bottom: 28px;
+}
+
+.cabecalho-mentorias h2 {
+	margin: 0;
+	font-size: 28px;
+	letter-spacing: 1px;
+}
+
+.botao-criar-mentoria {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 40px;
+	padding: 0 18px;
+	border: 2px solid #111;
+	border-radius: 8px;
+	background-color: #111;
+	color: white;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-decoration: none;
+	transition: 0.2s ease;
+}
+
+.botao-criar-mentoria:hover {
+	background-color: white;
+	color: #111;
+}
+
+.lista-mentorias {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 18px;
+}
+
+.cartao-mentoria,
+.estado-vazio {
+	padding: 22px;
+	border: 2px solid #111;
+	border-radius: 12px;
+	background-color: white;
+}
+
+.cartao-cabecalho {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.cartao-cabecalho h3 {
+	margin: 0;
+	font-size: 21px;
+}
+
+.status-mentoria {
+	flex-shrink: 0;
+	padding: 5px 8px;
+	border-radius: 5px;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.status-aberta {
+	background-color: #d9f5df;
+	color: #145c25;
+}
+
+.status-fechada {
+	background-color: #ededed;
+	color: #444;
+}
+
+.detalhes-mentoria {
+	display: flex;
+	gap: 28px;
+	margin: 20px 0 14px;
+}
+
+.detalhes-mentoria div {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.detalhes-mentoria dt {
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.detalhes-mentoria dd {
+	margin: 0;
+	font-size: 15px;
+}
+
+.cartao-mentoria p,
+.estado-vazio p {
+	margin: 0;
+	line-height: 1.5;
+}
+
+.estado-vazio {
+	grid-column: 1 / -1;
+	text-align: center;
+}
+
+.estado-vazio h3 {
+	margin: 0 0 8px;
+}
+
+@media (max-width: 560px) {
+	.container-mentorias {
+		width: min(100% - 28px, 920px);
+		margin-top: 34px;
+	}
+
+	.cabecalho-mentorias {
+		align-items: stretch;
+		flex-direction: column;
+	}
+}

@@ -10,7 +10,7 @@ body {
     width: min(100% - 40px, 700px);
     height: 500px;
     margin: 120px auto 0;
-    border: 5px solid black;
+    border: 3px solid black;
     border-radius: 20px;
     background-color: white;
     overflow: hidden;
@@ -135,10 +135,11 @@ body {
 
 .btn-acao {
     display: inline-flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    min-width: 120px;
+    min-width: 0;
     height: 36px;
     padding: 0 16px;
     border: 2px solid black;
@@ -147,6 +148,7 @@ body {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
+    white-space: nowrap;
     cursor: pointer;
     transition: 0.2s ease;
 }
@@ -162,13 +164,23 @@ body {
 }
 
 .btn-vagas {
+    flex: 1.25;
+    min-width: 170px;
+    padding-right: 22px;
+    padding-left: 22px;
     background-color: white;
     color: black;
+    text-decoration: none;
 }
 
 .btn-vagas:hover {
     background-color: black;
     color: white;
+}
+
+.btn-vagas:focus-visible {
+    outline: 3px solid black;
+    outline-offset: 3px;
 }
 
 .btn-editar-dados {

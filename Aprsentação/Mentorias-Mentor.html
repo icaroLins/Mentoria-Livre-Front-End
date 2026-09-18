@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorias do Mentor</title>
+    <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/Mentorias-Mentor.css">
+    <script src="js/menu.js" defer></script>
+	<script src="js/Mentorias-Mentor.js" defer></script>
+</head>
+<body>
+     <!--- cabeçario -->
+	<div class="container-cabeçalho">
+		<h1>MENTORIA LIVRE</h1>
+		<div class="container-botoes">
+			<div class="menu-wrapper">
+				<button type="button" class="btn-cadastro" id="btn-menu" aria-expanded="false" aria-controls="menu-navegacao">MENU</button>
+				<nav class="menu-navegacao" id="menu-navegacao" aria-label="Navegação principal">
+					<a href="index.html">INÍCIO</a>
+					<a href="login.html">LOGIN</a>
+					<a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
+					<a href="perfilMentor.html">PERFIL DO MENTOR</a>
+					<a href="cadastro.html">CADASTRO DO MENTORADO</a>
+                    <a href="Mentorias-Mentor.html">MENTORIAS </a>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<main class="container-mentorias">
+		<div class="cabecalho-mentorias">
+			<h2>MINHAS MENTORIAS</h2>
+			<a class="botao-criar-mentoria" href="criar-vagas.html">CRIAR MENTORIA</a>
+		</div>
+		<section class="lista-mentorias" id="listaMentorias" aria-live="polite"></section>
+	</main>
+    
+</body>
+</html>
