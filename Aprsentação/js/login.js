@@ -2,6 +2,7 @@
 const abrirCadastro = document.querySelector('#abrir-cadastro');
 const fecharCadastro = document.querySelector('#fechar-cadastro');
 const modalCadastro = document.querySelector('#modal-cadastro');
+const formularioLogin = document.querySelector('#form-login');
 
 function abrirModal() {
 	modalCadastro.classList.add('aberto');
@@ -29,4 +30,11 @@ document.addEventListener('keydown', (event) => {
 	if (event.key === 'Escape' && modalCadastro.classList.contains('aberto')) {
 		fecharModal();
 	}
+});
+
+formularioLogin.addEventListener('submit', (event) => {
+	event.preventDefault();
+	const tipoAcesso = document.querySelector('#tipo-acesso').value;
+	localStorage.setItem('tipoUsuario', tipoAcesso);
+	window.location.href = tipoAcesso === 'mentor' ? 'Mentorias-Mentor.html' : 'Mentorado-Mentorias.html';
 });

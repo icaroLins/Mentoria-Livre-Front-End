@@ -22,7 +22,7 @@ body {
 
 .lista-mentorias {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	grid-template-columns: 1fr;
 	gap: 18px;
 }
 
@@ -40,18 +40,21 @@ body {
 }
 
 .cartao-cabecalho {
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: minmax(220px, 32%) minmax(0, 1fr) auto;
+	align-items: center;
 	gap: 14px;
 }
 
 .cartao-cabecalho h3 {
+	min-width: 0;
 	margin: 0;
 	font-size: 21px;
+	overflow-wrap: anywhere;
 }
 
 .status-mentoria {
+	justify-self: end;
 	flex-shrink: 0;
 	padding: 5px 8px;
 	border-radius: 5px;
@@ -70,22 +73,27 @@ body {
 	color: #444;
 }
 
+.status-cheia {
+	background-color: #f8d7da;
+	color: #842029;
+}
+
 .detalhes-mentoria {
 	display: flex;
-	gap: 28px;
-	margin: 20px 0 14px;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 24px;
+	margin: 0;
 }
 
 .detalhes-mentoria div {
 	display: flex;
-	flex-direction: column;
 	gap: 4px;
 }
 
 .detalhes-mentoria dt {
-	font-size: 11px;
-	font-weight: 700;
-	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 .detalhes-mentoria dd {
@@ -97,6 +105,10 @@ body {
 .estado-vazio p {
 	margin: 0 0 18px;
 	line-height: 1.5;
+}
+
+.cartao-mentoria p {
+	margin-top: 18px;
 }
 
 .cartao-mentoria p {
@@ -145,5 +157,14 @@ body {
 	.container-mentorias {
 		width: min(100% - 28px, 920px);
 		margin-top: 34px;
+	}
+
+	.cartao-cabecalho {
+		grid-template-columns: 1fr;
+		align-items: start;
+	}
+
+	.status-mentoria {
+		justify-self: start;
 	}
 }

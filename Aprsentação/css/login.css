@@ -55,6 +55,17 @@ body{
     font: inherit;
 }
 
+.lado-direito select {
+    box-sizing: border-box;
+    height: 34px;
+    margin-bottom: 12px;
+    padding: 0 8px;
+    border: 1px solid black;
+    border-radius: 7px;
+    background-color: white;
+    font: inherit;
+}
+
 .botao-formulario,
 .botao-enviar {
     display: flex;
