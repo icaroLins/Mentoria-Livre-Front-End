@@ -19,10 +19,10 @@
             <nav class="menu-navegacao" id="menu-navegacao" aria-label="Navegação principal">
                 <a href="index.html">INÍCIO</a>
                 <a href="login.html">LOGIN</a>
-                <a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
-                <a href="perfilMentor.html">PERFIL DO MENTOR</a>
-                <a href="cadastro.html">CADASTRO DO MENTORADO</a>
-                <a href="criar-vagas.html">CRIAR VAGAS</a>
+                <a href="cadastro.html">CADASTRO</a>
+                <a href="PerfilMentorado.html">PERFIL</a>
+                <a href="Mentorado-Mentorias.html">MENTORIAS</a>
+                <a href="painelMentorado.html">MINHAS MENTORIAS</a>
             </nav>
         </div>
     </div>
@@ -37,12 +37,19 @@
 
     <div class="lado-direito">
         <h2>LOGIN</h2>
-    <form>
+    <form id="form-login">
         <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required>
 
         <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha">
+        <input type="password" id="senha" name="senha" required>
+
+        <label for="tipo-acesso">Entrar como:</label>
+        <select id="tipo-acesso" name="tipo-acesso" required>
+            <option value="">Selecione o tipo de acesso</option>
+            <option value="mentor">Mentor</option>
+            <option value="mentorado">Mentorado</option>
+        </select>
         <div class="botoes-secundarios">
             <button type="button" class="botao-formulario botao-cadastro" id="abrir-cadastro">CADASTRA-SE</button>
             <a href="index.html" class="botao-formulario">VOLTAR</a>
