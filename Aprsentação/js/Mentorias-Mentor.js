@@ -2,18 +2,31 @@ const STORAGE_KEY = "mentoriasMentor";
 const ENROLLMENTS_KEY = "mentoriasInscritas";
 const MENSAGENS_KEY = "mensagensMentorias";
 const LEITURAS_KEY = "leiturasChatMentor";
+const LEITURAS_MENTORADO_KEY = "leiturasChatMentorado";
 const listaMentorias = document.querySelector("#listaMentorias");
 const abrirEdicao = document.querySelector("#abrir-edicao");
 const modalEdicao = document.querySelector("#modal-edicao");
+const mentorDados = JSON.parse(localStorage.getItem("mentorDados") || "null");
 
-function lerMentorias() {
+if (localStorage.getItem("tipoUsuario") !== "mentor" || !mentorDados?.email) {
+	window.location.href = "login.html";
+}
+
+function lerTodasMentorias() {
 	return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
 }
 
+// Filtra as mentorias do mentor logado.
+function lerMentorias() {
+	return lerTodasMentorias().filter((mentoria) => mentoria.mentorEmail === mentorDados.email);
+}
+
+// Formata a data para o campo de edição.
 function formatarDataInput(data) {
 	return data || "";
 }
 
+// Monta o modal de edição.
 function renderizarEdicao() {
 	const mentorias = lerMentorias();
 	modalEdicao.innerHTML = `
@@ -45,6 +58,7 @@ function renderizarEdicao() {
 						<div class="acoes-edicao">
 							<button class="botao-salvar-edicao" type="submit">SALVAR</button>
 							<button class="botao-encerrar" data-encerrar="${mentoria.id}" type="button">ENCERRAR</button>
+							<button class="botao-encerrar botao-apagar" data-apagar="${mentoria.id}" type="button">APAGAR MENTORIA</button>
 						</div>
 					</form>
 				`).join("") : "<p>Nenhuma mentoria cadastrada.</p>"}
@@ -59,8 +73,12 @@ function renderizarEdicao() {
 	modalEdicao.querySelectorAll("[data-encerrar]").forEach((botao) => {
 		botao.addEventListener("click", encerrarMentoria);
 	});
+	modalEdicao.querySelectorAll("[data-apagar]").forEach((botao) => {
+		botao.addEventListener("click", apagarMentoria);
+	});
 }
 
+// Protege textos exibidos no HTML.
 function escaparHtml(valor) {
 	return String(valor || "")
 		.replaceAll("&", "&amp;")
@@ -69,23 +87,26 @@ function escaparHtml(valor) {
 		.replaceAll('"', "&quot;");
 }
 
+// Abre a edição das mentorias.
 function abrirModalEdicao() {
 	renderizarEdicao();
 	modalEdicao.classList.add("aberto");
 	modalEdicao.setAttribute("aria-hidden", "false");
 }
 
+// Fecha a edição das mentorias.
 function fecharEdicao() {
 	modalEdicao.classList.remove("aberto");
 	modalEdicao.setAttribute("aria-hidden", "true");
 }
 
+// Salva alterações da mentoria.
 function salvarEdicao(event) {
 	event.preventDefault();
 	const formulario = event.currentTarget;
 	const dados = new FormData(formulario);
 	const data = dados.get("data");
-	const mentorias = lerMentorias();
+	const mentorias = lerTodasMentorias();
 	const mentoria = mentorias.find((item) => String(item.id) === formulario.dataset.id);
 
 	if (!mentoria || !data) {
@@ -102,18 +123,53 @@ function salvarEdicao(event) {
 	renderizarMentorias();
 }
 
+// Encerra uma mentoria.
 function encerrarMentoria(event) {
 	const id = event.currentTarget.dataset.encerrar;
 	if (!window.confirm("Tem certeza que quer encerrar esta mentoria?")) {
 		return;
 	}
 
-	const mentorias = lerMentorias();
+	const mentorias = lerTodasMentorias();
 	const mentoria = mentorias.find((item) => String(item.id) === id);
-	if (mentoria) {
+	if (mentoria && mentoria.mentorEmail === mentorDados.email) {
 		mentoria.status = "fechada";
 		localStorage.setItem(STORAGE_KEY, JSON.stringify(mentorias));
 	}
+	fecharEdicao();
+	renderizarMentorias();
+}
+
+// Apaga a mentoria e seus dados relacionados.
+function apagarMentoria(event) {
+	const id = event.currentTarget.dataset.apagar;
+	if (!window.confirm("Tem certeza que deseja apagar esta mentoria? Essa ação não pode ser desfeita.")) {
+		return;
+	}
+
+	const mentorias = lerTodasMentorias();
+	const mentoria = mentorias.find((item) => String(item.id) === id);
+	if (!mentoria || mentoria.mentorEmail !== mentorDados.email) {
+		return;
+	}
+
+	localStorage.setItem(STORAGE_KEY, JSON.stringify(mentorias.filter((item) => String(item.id) !== id)));
+
+	const inscricoes = JSON.parse(localStorage.getItem(ENROLLMENTS_KEY) || "[]");
+	localStorage.setItem(ENROLLMENTS_KEY, JSON.stringify(inscricoes.filter((item) => String(item) !== id)));
+
+	const mensagens = JSON.parse(localStorage.getItem(MENSAGENS_KEY) || "{}");
+	delete mensagens[id];
+	localStorage.setItem(MENSAGENS_KEY, JSON.stringify(mensagens));
+
+	const leituras = JSON.parse(localStorage.getItem(LEITURAS_KEY) || "{}");
+	delete leituras[id];
+	localStorage.setItem(LEITURAS_KEY, JSON.stringify(leituras));
+
+	const leiturasMentorado = JSON.parse(localStorage.getItem(LEITURAS_MENTORADO_KEY) || "{}");
+	delete leiturasMentorado[id];
+	localStorage.setItem(LEITURAS_MENTORADO_KEY, JSON.stringify(leiturasMentorado));
+
 	fecharEdicao();
 	renderizarMentorias();
 }
@@ -135,12 +191,14 @@ function lerMensagens(id) {
 	return mensagens[id] || [];
 }
 
+// Verifica novas mensagens.
 function temMensagemNova(mentoria, mensagens) {
 	const leituras = JSON.parse(localStorage.getItem(LEITURAS_KEY) || "{}");
 	const mensagensDoMentorado = mensagens.filter((mensagem) => mensagem.autor === "mentorado").length;
 	return mensagensDoMentorado > (leituras[mentoria.id] || 0);
 }
 
+// Cria uma mensagem do chat.
 function criarMensagem(mensagem) {
 	const item = document.createElement("div");
 	item.className = `mensagem-chat ${mensagem.autor === "mentor" ? "mensagem-mentor" : ""}`;
@@ -148,6 +206,7 @@ function criarMensagem(mensagem) {
 	return item;
 }
 
+// Abre o chat do mentor.
 function abrirChatMentor(mentoria) {
 	const mensagens = lerMensagens(mentoria.id);
 	const leituras = JSON.parse(localStorage.getItem(LEITURAS_KEY) || "{}");
@@ -221,6 +280,7 @@ function abrirChatMentor(mentoria) {
 	entrada.focus();
 }
 
+// Cria o botão do chat.
 function criarBotaoChat(mentoria) {
 	const botao = document.createElement("button");
 	botao.type = "button";
@@ -237,6 +297,7 @@ function criarBotaoChat(mentoria) {
 	return botao;
 }
 
+// Formata a data exibida.
 function formatarData(data) {
 	if (!data) {
 		return "Data não informada";
@@ -247,11 +308,13 @@ function formatarData(data) {
 	}).format(new Date(`${data}T00:00:00`));
 }
 
+// Obtém a data atual.
 function obterDataAtual() {
 	const hoje = new Date();
 	return `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, "0")}-${String(hoje.getDate()).padStart(2, "0")}`;
 }
 
+// Ordena as mentorias.
 function ordenarMentorias(mentorias) {
 	return [...mentorias].sort((primeira, segunda) => {
 		const primeiraDisponivel = primeira.status === "aberta"
@@ -265,6 +328,7 @@ function ordenarMentorias(mentorias) {
 	});
 }
 
+// Cria o cartão da mentoria.
 function criarCartaoMentoria(mentoria) {
 	const cartao = document.createElement("article");
 	cartao.className = "cartao-mentoria";
@@ -287,15 +351,14 @@ function criarCartaoMentoria(mentoria) {
 		<p>${mentoria.descricao}</p>
 	`;
 
-	if (vagasOcupadas > 0) {
-		cartao.append(criarBotaoChat(mentoria));
-	}
+	cartao.append(criarBotaoChat(mentoria));
 
 	return cartao;
 }
 
+// Renderiza as mentorias do mentor.
 function renderizarMentorias() {
-	const mentorias = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+	const mentorias = lerMentorias();
 	const inscricoes = JSON.parse(localStorage.getItem(ENROLLMENTS_KEY) || "[]");
 	let houveAtualizacao = false;
 	mentorias.forEach((mentoria) => {
