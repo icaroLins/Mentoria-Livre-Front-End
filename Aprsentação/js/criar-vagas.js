@@ -1,6 +1,11 @@
 const STORAGE_KEY = "mentoriasMentor";
 const formulario = document.querySelector("#formularioMentoria");
 const campoData = document.querySelector("#data");
+const mentorDados = JSON.parse(localStorage.getItem("mentorDados") || "null");
+
+if (localStorage.getItem("tipoUsuario") !== "mentor" || !mentorDados?.email) {
+	window.location.href = "login.html";
+}
 
 function obterDataAtual() {
 	const hoje = new Date();
@@ -11,6 +16,7 @@ function obterDataAtual() {
 }
 
 campoData.min = obterDataAtual();
+// Cria uma nova mentoria.
 
 formulario.addEventListener("submit", (event) => {
 	event.preventDefault();
@@ -33,7 +39,8 @@ formulario.addEventListener("submit", (event) => {
 		quantidade: dadosFormulario.get("quantidade"),
 		inscritos: 0,
 		data,
-		descricao: dadosFormulario.get("descricao").trim()
+		descricao: dadosFormulario.get("descricao").trim(),
+		mentorEmail: mentorDados.email
 	};
 
 	mentoriasSalvas.push(novaMentoria);

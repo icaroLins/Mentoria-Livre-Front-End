@@ -8,6 +8,7 @@ function lerJson(chave, valorPadrao) {
 	return JSON.parse(localStorage.getItem(chave) || JSON.stringify(valorPadrao));
 }
 
+// Formata a data exibida no painel.
 function formatarData(data) {
 	if (!data) {
 		return "Data não informada";
@@ -16,18 +17,21 @@ function formatarData(data) {
 	return new Intl.DateTimeFormat("pt-BR", { dateStyle: "long" }).format(new Date(`${data}T00:00:00`));
 }
 
+// Verifica novas mensagens do mentor.
 function temMensagemNova(mentoria, mensagens) {
 	const leituras = lerJson(LEITURAS_KEY, {});
 	const mensagensDoMentor = mensagens.filter((mensagem) => mensagem.autor === "mentor").length;
 	return mensagensDoMentor > (leituras[mentoria.id] || 0);
 }
 
+// Marca as mensagens como lidas.
 function marcarComoLidas(mentoria, mensagens) {
 	const leituras = lerJson(LEITURAS_KEY, {});
 	leituras[mentoria.id] = mensagens.filter((mensagem) => mensagem.autor === "mentor").length;
 	localStorage.setItem(LEITURAS_KEY, JSON.stringify(leituras));
 }
 
+// Cria uma mensagem do chat.
 function criarMensagem(mensagem) {
 	const item = document.createElement("div");
 	item.className = `mensagem-chat ${mensagem.autor === "mentorado" ? "mensagem-mentorado" : ""}`;
@@ -35,6 +39,7 @@ function criarMensagem(mensagem) {
 	return item;
 }
 
+// Abre o chat do mentorado.
 function abrirChat(mentoria) {
 	const mensagens = lerJson(MENSAGENS_KEY, {})[mentoria.id] || [];
 	marcarComoLidas(mentoria, mensagens);
@@ -107,6 +112,7 @@ function abrirChat(mentoria) {
 	entrada.focus();
 }
 
+// Cria o cartão da mentoria inscrita.
 function criarCartao(mentoria, status, mensagens) {
 	const cartao = document.createElement("article");
 	cartao.className = "cartao-painel";
@@ -141,6 +147,7 @@ function criarCartao(mentoria, status, mensagens) {
 	return cartao;
 }
 
+// Renderiza o painel do mentorado.
 function renderizarPainel() {
 	const mentorias = lerJson(MENTORIAS_KEY, []);
 	const inscricoes = lerJson(INSCRICOES_KEY, []);

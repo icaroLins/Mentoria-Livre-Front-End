@@ -13,11 +13,13 @@ function formatarData(data) {
 	}).format(new Date(`${data}T00:00:00`));
 }
 
+// Obtém a data atual.
 function obterDataAtual() {
 	const hoje = new Date();
 	return `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, "0")}-${String(hoje.getDate()).padStart(2, "0")}`;
 }
 
+// Ordena as mentorias disponíveis.
 function ordenarMentorias(mentorias) {
 	return [...mentorias].sort((primeira, segunda) => {
 		const primeiraDisponivel = primeira.status === "aberta"
@@ -31,6 +33,7 @@ function ordenarMentorias(mentorias) {
 	});
 }
 
+// Cria o cartão de uma mentoria.
 function criarCartaoMentoria(mentoria) {
 	const cartao = document.createElement("article");
 	const estaAberta = mentoria.status === "aberta";
@@ -104,6 +107,7 @@ function criarCartaoMentoria(mentoria) {
 	return cartao;
 }
 
+// Renderiza as mentorias para o mentorado.
 function renderizarMentorias() {
 	const mentorias = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
 	const inscricoes = JSON.parse(localStorage.getItem(ENROLLMENTS_KEY) || "[]");
