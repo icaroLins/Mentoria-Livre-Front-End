@@ -12,17 +12,20 @@
 <body>
      <!--- cabeçario -->
 	<div class="container-cabeçalho">
-		<h1>MENTORIA LIVRE</h1>
+		<h1>
+     M<span class="letra-e1">E</span>N<span class="letra-t">T</span>O<span class="letra-r">R</span>I<span class="letra-a">A</span> 
+     <span class="letra-l">L</span><span class="letra-i">I</span><span class="letra-v">V</span>R<span class="letra-e2">E</span>
+</h1>
 		<div class="container-botoes">
 			<div class="menu-wrapper">
 				<button type="button" class="btn-cadastro" id="btn-menu" aria-expanded="false" aria-controls="menu-navegacao">MENU</button>
 				<nav class="menu-navegacao" id="menu-navegacao" aria-label="Navegação principal">
 					<a href="index.html">INÍCIO</a>
 					<a href="login.html">LOGIN</a>
-					<a href="cadastro-mentor.html">CADASTRO DO MENTOR</a>
-					<a href="perfilMentor.html">PERFIL DO MENTOR</a>
-					<a href="cadastro.html">CADASTRO DO MENTORADO</a>
-                    <a href="Mentorias-Mentor.html">MENTORIAS </a>
+					<a href="cadastro-mentor.html">CADASTRO</a>
+					<a href="perfilMentor.html">PERFIL</a>
+					<a href="criar-vagas.html">CRIAR VAGAS</a>
+					<a href="Mentorias-Mentor.html">MENTORIAS</a>
 				</nav>
 			</div>
 		</div>
@@ -32,10 +35,15 @@
 	<main class="container-mentorias">
 		<div class="cabecalho-mentorias">
 			<h2>MINHAS MENTORIAS</h2>
-			<a class="botao-criar-mentoria" href="criar-vagas.html">CRIAR MENTORIA</a>
+			<div class="acoes-mentorias">
+				<button class="botao-editar-mentorias" id="abrir-edicao" type="button">EDITAR</button>
+				<a class="botao-criar-mentoria" href="criar-vagas.html">CRIAR MENTORIA</a>
+			</div>
 		</div>
 		<section class="lista-mentorias" id="listaMentorias" aria-live="polite"></section>
 	</main>
+
+	<div class="modal-edicao" id="modal-edicao" aria-hidden="true"></div>
     
 </body>
 </html>

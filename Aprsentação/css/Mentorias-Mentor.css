@@ -46,9 +46,33 @@ body {
 	color: #111;
 }
 
+.acoes-mentorias {
+	display: flex;
+	gap: 8px;
+}
+
+.botao-editar-mentorias {
+	min-height: 40px;
+	padding: 0 18px;
+	border: 2px solid #111;
+	border-radius: 8px;
+	background-color: white;
+	color: #111;
+	font: inherit;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	cursor: pointer;
+}
+
+.botao-editar-mentorias:hover {
+	background-color: #111;
+	color: white;
+}
+
 .lista-mentorias {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	grid-template-columns: 1fr;
 	gap: 18px;
 }
 
@@ -61,18 +85,21 @@ body {
 }
 
 .cartao-cabecalho {
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: minmax(220px, 32%) minmax(0, 1fr) auto;
+	align-items: center;
 	gap: 14px;
 }
 
 .cartao-cabecalho h3 {
+	min-width: 0;
 	margin: 0;
 	font-size: 21px;
+	overflow-wrap: anywhere;
 }
 
 .status-mentoria {
+	justify-self: end;
 	flex-shrink: 0;
 	padding: 5px 8px;
 	border-radius: 5px;
@@ -91,22 +118,27 @@ body {
 	color: #444;
 }
 
+.status-cheia {
+	background-color: #f8d7da;
+	color: #842029;
+}
+
 .detalhes-mentoria {
 	display: flex;
-	gap: 28px;
-	margin: 20px 0 14px;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 24px;
+	margin: 0;
 }
 
 .detalhes-mentoria div {
 	display: flex;
-	flex-direction: column;
 	gap: 4px;
 }
 
 .detalhes-mentoria dt {
-	font-size: 11px;
-	font-weight: 700;
-	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 .detalhes-mentoria dd {
@@ -120,6 +152,150 @@ body {
 	line-height: 1.5;
 }
 
+.cartao-mentoria p {
+	margin-top: 18px;
+}
+
+.ocupacao-mentoria {
+	margin: 18px 0 0;
+	font-weight: 700;
+}
+
+.mensagens-chat {
+	display: grid;
+	gap: 8px;
+	max-height: 220px;
+	overflow-y: auto;
+	margin-bottom: 12px;
+}
+
+.mensagem-chat {
+	max-width: 75%;
+	padding: 8px 10px;
+	border-radius: 8px;
+	background-color: #ededed;
+	line-height: 1.4;
+}
+
+.mensagem-chat.mensagem-mentor {
+	justify-self: end;
+	background-color: #111;
+	color: white;
+}
+
+.formulario-chat {
+	display: flex;
+	gap: 8px;
+}
+
+.formulario-chat input {
+	min-width: 0;
+	flex: 1;
+	padding: 9px;
+	border: 1px solid #111;
+	border-radius: 6px;
+	font: inherit;
+}
+
+.formulario-chat button {
+	padding: 0 14px;
+	border: 2px solid #111;
+	border-radius: 6px;
+	background-color: #111;
+	color: white;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.botao-chat-sala {
+	position: relative;
+	align-self: flex-end;
+	min-height: 38px;
+	margin-top: 18px;
+	padding: 0 16px;
+	border: 2px solid #111;
+	border-radius: 7px;
+	background-color: #111;
+	color: white;
+	font: inherit;
+	font-size: 12px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.botao-chat-sala:hover {
+	background-color: white;
+	color: #111;
+}
+
+.indicador-novas-mensagens {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	width: 11px;
+	height: 11px;
+	border: 2px solid white;
+	border-radius: 50%;
+	background-color: #27ae60;
+}
+
+.modal-chat {
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, .55);
+}
+
+.janela-chat {
+	position: relative;
+	box-sizing: border-box;
+	width: min(100%, 560px);
+	padding: 32px;
+	border: 3px solid #111;
+	border-radius: 16px;
+	background-color: white;
+}
+
+.janela-chat h2 {
+	margin: 0 0 18px;
+	padding-right: 28px;
+	font-size: 22px;
+}
+
+.painel-conversa {
+	position: relative;
+	box-sizing: border-box;
+	min-height: 360px;
+	margin-bottom: 14px;
+	padding: 34px 22px 48px;
+	border: 2px solid #111;
+	background-color: white;
+}
+
+.saudacao-conversa {
+	margin: 0 0 18px;
+	font-size: 16px;
+}
+
+.painel-conversa .mensagens-chat {
+	max-height: 250px;
+}
+
+.fechar-chat {
+	position: absolute;
+	top: 8px;
+	right: 12px;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	font-size: 28px;
+	line-height: 1;
+}
+
 .estado-vazio {
 	grid-column: 1 / -1;
 	text-align: center;
@@ -127,6 +303,117 @@ body {
 
 .estado-vazio h3 {
 	margin: 0 0 8px;
+}
+
+.modal-edicao {
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, .55);
+}
+
+.modal-edicao.aberto {
+	display: flex;
+}
+
+.janela-edicao {
+	position: relative;
+	box-sizing: border-box;
+	width: min(100%, 760px);
+	max-height: 90vh;
+	padding: 32px;
+	overflow-y: auto;
+	border: 3px solid #111;
+	border-radius: 14px;
+	background-color: white;
+}
+
+.janela-edicao h2 {
+	margin: 0 0 20px;
+	font-size: 24px;
+}
+
+.fechar-edicao {
+	position: absolute;
+	top: 8px;
+	right: 12px;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	font-size: 28px;
+}
+
+.lista-edicao {
+	display: grid;
+	gap: 18px;
+}
+
+.formulario-edicao {
+	display: grid;
+	gap: 8px;
+	padding: 18px;
+	border: 2px solid #111;
+	border-radius: 10px;
+}
+
+.formulario-edicao h3 {
+	margin: 0 0 4px;
+	font-size: 18px;
+}
+
+.formulario-edicao label {
+	display: grid;
+	gap: 4px;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.formulario-edicao input,
+.formulario-edicao select,
+.formulario-edicao textarea {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 9px;
+	border: 1px solid #111;
+	border-radius: 7px;
+	font: inherit;
+}
+
+.formulario-edicao textarea {
+	min-height: 80px;
+	resize: vertical;
+}
+
+.acoes-edicao {
+	display: flex;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.botao-salvar-edicao,
+.botao-encerrar {
+	min-height: 34px;
+	padding: 0 12px;
+	border: 2px solid #111;
+	border-radius: 6px;
+	font: inherit;
+	font-size: 11px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.botao-salvar-edicao {
+	background-color: #111;
+	color: white;
+}
+
+.botao-encerrar {
+	background-color: #f8d7da;
+	color: #842029;
 }
 
 @media (max-width: 560px) {
@@ -138,5 +425,39 @@ body {
 	.cabecalho-mentorias {
 		align-items: stretch;
 		flex-direction: column;
+	}
+
+	.acoes-mentorias {
+		flex-direction: column;
+	}
+
+	.janela-edicao {
+		padding: 28px 20px 20px;
+	}
+
+	.cartao-cabecalho {
+		grid-template-columns: 1fr;
+		align-items: start;
+	}
+
+	.status-mentoria {
+		justify-self: start;
+	}
+
+	.formulario-chat {
+		flex-direction: column;
+	}
+
+	.formulario-chat button {
+		min-height: 36px;
+	}
+
+	.janela-chat {
+		padding: 28px 20px 20px;
+	}
+
+	.painel-conversa {
+		min-height: 300px;
+		padding: 28px 16px 44px;
 	}
 }

@@ -1,4 +1,3 @@
-// Função para formatar a data no padrão brasileiro.
 function formatarData(data) {
     if (!data) return 'Data não informada';
 
@@ -10,7 +9,6 @@ function formatarData(data) {
     }).format(dataObj);
 }
 
-// Função da foto: troca a imagem de perfil quando o usuário escolhe uma nova foto.
 const inputFoto = document.getElementById('input-foto');
 const fotoPerfil = document.getElementById('fotoPerfil');
 
@@ -35,7 +33,7 @@ if (inputFoto && fotoPerfil) {
     });
 }
 
-// Função do formulário: salva os dados do mentor e redireciona para o perfil.
+// Salva o cadastro do mentor e encaminha para o login.
 const formMentor = document.getElementById('form-mentor');
 
 if (formMentor) {
@@ -46,21 +44,28 @@ if (formMentor) {
             nome: document.getElementById('nome')?.value.trim() || '',
             area: document.getElementById('area')?.value.trim() || '',
             email: document.getElementById('email')?.value.trim() || '',
-            nascimento: document.getElementById('nascimento')?.value || ''
+            nascimento: document.getElementById('nascimento')?.value || '',
+            senha: document.getElementById('senha')?.value || ''
         };
 
         localStorage.setItem('mentorDados', JSON.stringify(dados));
-        window.location.href = 'perfilMentor.html';
+        localStorage.removeItem('tipoUsuario');
+        window.location.href = 'login.html';
     });
 }
 
 const infoMentor = document.getElementById('infoMentor');
+const btnVoltar = document.querySelector('.btn-voltar');
 const btnEditarDados = document.getElementById('btnEditarDados');
 const modalEditar = document.getElementById('modalEditar');
 const formEditarPerfil = document.getElementById('formEditarPerfil');
 const cancelarEdicao = document.getElementById('cancelarEdicao');
 
-// Função para mostrar os dados do mentor na tela.
+if (infoMentor && localStorage.getItem('tipoUsuario') !== 'mentor') {
+    window.location.href = 'login.html';
+}
+
+// Mostra os dados do mentor na tela.
 function renderizarDadosMentor() {
     if (!infoMentor) return;
 
@@ -81,7 +86,6 @@ function renderizarDadosMentor() {
     `).join('');
 }
 
-// Função para abrir o modal de edição do perfil.
 function abrirModalEdicao() {
     if (!modalEditar || !formEditarPerfil) return;
 
@@ -96,7 +100,6 @@ function abrirModalEdicao() {
     modalEditar.setAttribute('aria-hidden', 'false');
 }
 
-// Função para fechar o modal de edição.
 function fecharModalEdicao() {
     if (!modalEditar) return;
 
@@ -106,6 +109,12 @@ function fecharModalEdicao() {
 
 if (infoMentor) {
     renderizarDadosMentor();
+}
+
+if (btnVoltar) {
+    btnVoltar.addEventListener('click', () => {
+        window.location.href = 'Mentorias-Mentor.html';
+    });
 }
 
 if (btnEditarDados) {
@@ -132,7 +141,8 @@ if (formEditarPerfil) {
             nome: document.getElementById('editarNome').value.trim(),
             area: document.getElementById('editarArea').value.trim(),
             email: document.getElementById('editarEmail').value.trim(),
-            nascimento: document.getElementById('editarNascimento').value
+            nascimento: document.getElementById('editarNascimento').value,
+            senha: JSON.parse(localStorage.getItem('mentorDados') || '{}').senha || ''
         };
 
         localStorage.setItem('mentorDados', JSON.stringify(dadosAtualizados));

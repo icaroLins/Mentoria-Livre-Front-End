@@ -3,11 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cadastro do Mentorado</title>
+	<title>Painel do Mentorado</title>
 	<link rel="stylesheet" href="css/cabecalho.css">
-	<link rel="stylesheet" href="css/cadastro.css">
+	<link rel="stylesheet" href="css/painelMentorado.css">
 	<script src="js/menu.js" defer></script>
-	<script src="js/perfilMentorado.js" defer></script>
+	<script src="js/painelMentorado.js" defer></script>
 </head>
 <body>
 	<div class="container-cabeçalho">
@@ -15,7 +15,6 @@
      M<span class="letra-e1">E</span>N<span class="letra-t">T</span>O<span class="letra-r">R</span>I<span class="letra-a">A</span> 
      <span class="letra-l">L</span><span class="letra-i">I</span><span class="letra-v">V</span>R<span class="letra-e2">E</span>
 </h1>
-
 		<div class="container-botoes">
 			<div class="menu-wrapper">
 				<button type="button" class="btn-cadastro" id="btn-menu" aria-expanded="false" aria-controls="menu-navegacao">MENU</button>
@@ -32,32 +31,12 @@
 	</div>
 	<hr>
 
-	<main class="container-cadastro">
-		<div class="lado-esquerdo">
-			<img src="assets/ChatGPT Image 31_08_2026, 09_41_18.png" alt="Ilustração da Mentoria Livre">
+	<main class="painel-mentorado">
+		<div class="cabecalho-painel">
+			<h2>MINHAS MENTORIAS</h2>
+			<p>Acompanhe suas inscrições e converse com o mentor quando for aceito.</p>
 		</div>
-
-		<div class="lado-direito">
-			<h2>CADASTRO DO MENTORADO</h2>
-			<form id="form-mentorado">
-				<label for="nome">Nome:</label>
-				<input type="text" id="nome" name="nome" autocomplete="name" required>
-
-				<label for="data-nascimento">Data de nascimento:</label>
-				<input type="date" id="data-nascimento" name="data-nascimento" required>
-
-				<label for="email">E-mail:</label>
-				<input type="email" id="email" name="email" autocomplete="email" required>
-
-				<label for="senha">Senha:</label>
-				<input type="password" id="senha" name="senha" autocomplete="new-password" required>
-
-				<div class="botoes-cadastro">
-					<button type="submit" class="botao-finalizar">FINALIZAR</button>
-					<a href="cadastro-mentor.html" class="botao-mentorado">MENTOR</a>
-				</div>
-			</form>
-		</div>
+		<section class="lista-painel" id="listaPainel" aria-live="polite"></section>
 	</main>
 </body>
 </html>

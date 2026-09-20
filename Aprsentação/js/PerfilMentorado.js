@@ -33,6 +33,7 @@ if (inputFoto && fotoPerfil) {
 
 const formMentorado = document.getElementById('form-mentorado');
 
+// Salva o cadastro do mentorado e encaminha para o login.
 if (formMentorado) {
     formMentorado.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -40,11 +41,13 @@ if (formMentorado) {
         const dados = {
             nome: document.getElementById('nome')?.value.trim() || '',
             nascimento: document.getElementById('data-nascimento')?.value || '',
-            email: document.getElementById('email')?.value.trim() || ''
+            email: document.getElementById('email')?.value.trim() || '',
+            senha: document.getElementById('senha')?.value || ''
         };
 
         localStorage.setItem('mentoradoDados', JSON.stringify(dados));
-        window.location.href = 'PerfilMentorado.html';
+        localStorage.removeItem('tipoUsuario');
+        window.location.href = 'login.html';
     });
 }
 
@@ -54,6 +57,11 @@ const modalEditar = document.getElementById('modalEditar');
 const formEditarPerfil = document.getElementById('formEditarPerfil');
 const cancelarEdicao = document.getElementById('cancelarEdicao');
 
+if (infoMentorado && localStorage.getItem('tipoUsuario') !== 'mentorado') {
+    window.location.href = 'login.html';
+}
+
+// Mostra os dados do mentorado na tela.
 function renderizarDadosMentorado() {
     if (!infoMentorado) return;
 
@@ -77,6 +85,7 @@ function renderizarDadosMentorado() {
     `).join('');
 }
 
+// Abre o modal de edição do perfil.
 function abrirModalEdicao() {
     const mentoradoDados = JSON.parse(localStorage.getItem('mentoradoDados') || '{}');
 
@@ -87,6 +96,7 @@ function abrirModalEdicao() {
     modalEditar.setAttribute('aria-hidden', 'false');
 }
 
+// Fecha o modal de edição.
 function fecharModalEdicao() {
     modalEditar.classList.add('hidden');
     modalEditar.setAttribute('aria-hidden', 'true');
@@ -117,7 +127,8 @@ if (formEditarPerfil) {
         const dadosAtualizados = {
             nome: document.getElementById('editarNome').value.trim(),
             email: document.getElementById('editarEmail').value.trim(),
-            nascimento: document.getElementById('editarNascimento').value
+            nascimento: document.getElementById('editarNascimento').value,
+            senha: JSON.parse(localStorage.getItem('mentoradoDados') || '{}').senha || ''
         };
 
         localStorage.setItem('mentoradoDados', JSON.stringify(dadosAtualizados));

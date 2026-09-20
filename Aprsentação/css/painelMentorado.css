@@ -1,0 +1,279 @@
+body {
+	margin: 0;
+	background-color: white;
+	color: #111;
+	font-family: helvetica, sans-serif;
+}
+
+.painel-mentorado {
+	width: min(100% - 40px, 920px);
+	margin: 54px auto;
+}
+
+.cabecalho-painel {
+	margin-bottom: 28px;
+}
+
+.cabecalho-painel h2 {
+	margin: 0 0 8px;
+	font-size: 28px;
+	letter-spacing: 1px;
+}
+
+.cabecalho-painel p {
+	margin: 0;
+	line-height: 1.5;
+}
+
+.lista-painel {
+	display: grid;
+	gap: 18px;
+}
+
+.cartao-painel,
+.estado-painel {
+	padding: 22px;
+	border: 2px solid #111;
+	border-radius: 12px;
+	background-color: white;
+}
+
+.cartao-painel {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.cartao-painel h3,
+.estado-painel h3 {
+	margin: 0 0 12px;
+	font-size: 21px;
+}
+
+.cartao-painel h3 {
+	padding-right: 100px;
+}
+
+.detalhes-painel {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 24px;
+	margin: 0 0 18px;
+}
+
+.detalhes-painel div {
+	display: flex;
+	gap: 4px;
+}
+
+.detalhes-painel dt {
+	font-weight: 700;
+}
+
+.detalhes-painel dd {
+	margin: 0;
+}
+
+.descricao-painel {
+	margin: 0 0 18px;
+	line-height: 1.5;
+}
+
+.status-inscricao {
+	display: inline-block;
+	margin-bottom: 18px;
+	padding: 6px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.cartao-painel .status-inscricao {
+	position: absolute;
+	top: 22px;
+	right: 22px;
+	margin: 0;
+}
+
+.status-pendente {
+	background-color: #fff1c2;
+	color: #6b4c00;
+}
+
+.status-aceito {
+	background-color: #d9f5df;
+	color: #145c25;
+}
+
+.status-recusado {
+	background-color: #f8d7da;
+	color: #842029;
+}
+
+.mensagens-chat {
+	display: grid;
+	gap: 8px;
+	max-height: 280px;
+	overflow-y: auto;
+	margin-bottom: 12px;
+}
+
+.painel-conversa {
+	position: relative;
+	box-sizing: border-box;
+	min-height: 360px;
+	margin-bottom: 14px;
+	padding: 34px 22px 48px;
+	border: 2px solid #111;
+	background-color: white;
+}
+
+.saudacao-conversa {
+	margin: 0 0 18px;
+	font-size: 16px;
+}
+
+.painel-conversa .mensagens-chat {
+	max-height: 250px;
+}
+
+.mensagem-chat {
+	max-width: 75%;
+	padding: 8px 10px;
+	border-radius: 8px;
+	background-color: #ededed;
+	line-height: 1.4;
+}
+
+.mensagem-chat.mensagem-mentorado {
+	justify-self: end;
+	background-color: #111;
+	color: white;
+}
+
+.formulario-chat {
+	display: flex;
+	gap: 8px;
+}
+
+.formulario-chat input {
+	min-width: 0;
+	flex: 1;
+	padding: 9px;
+	border: 1px solid #111;
+	border-radius: 6px;
+	font: inherit;
+}
+
+.formulario-chat button {
+	padding: 0 14px;
+	border: 2px solid #111;
+	border-radius: 6px;
+	background-color: #111;
+	color: white;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.botao-chat-sala {
+	align-self: flex-end;
+	position: relative;
+	min-height: 38px;
+	padding: 0 16px;
+	border: 2px solid #111;
+	border-radius: 7px;
+	background-color: #111;
+	color: white;
+	font: inherit;
+	font-size: 12px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.botao-chat-sala:hover {
+	background-color: white;
+	color: #111;
+}
+
+.indicador-novas-mensagens {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	width: 11px;
+	height: 11px;
+	border: 2px solid white;
+	border-radius: 50%;
+	background-color: #27ae60;
+}
+
+.modal-chat {
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, .55);
+}
+
+.janela-chat {
+	position: relative;
+	box-sizing: border-box;
+	width: min(100%, 560px);
+	padding: 32px;
+	border: 3px solid #111;
+	border-radius: 16px;
+	background-color: white;
+}
+
+.janela-chat h2 {
+	margin: 0 0 18px;
+	padding-right: 28px;
+	font-size: 22px;
+}
+
+.fechar-chat {
+	position: absolute;
+	top: 8px;
+	right: 12px;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	font-size: 28px;
+	line-height: 1;
+}
+
+.estado-painel {
+	text-align: center;
+}
+
+.estado-painel p {
+	margin: 0;
+	line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+	.painel-mentorado {
+		width: min(100% - 28px, 920px);
+		margin-top: 34px;
+	}
+
+	.formulario-chat {
+		flex-direction: column;
+	}
+
+	.formulario-chat button {
+		min-height: 36px;
+	}
+
+	.janela-chat {
+		padding: 28px 20px 20px;
+	}
+
+	.painel-conversa {
+		min-height: 300px;
+		padding: 28px 16px 44px;
+	}
+}

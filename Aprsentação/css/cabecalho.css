@@ -10,6 +10,43 @@
 
 }
 
+h1 {
+    color: black
+}
+
+.letra-e1{
+    color: #72c154;
+}
+
+.letra-t{
+    color: #f99351;
+}
+
+.letra-r{
+    color: #7d49c7;
+}
+
+.letra-a{
+    color: #e2c756;
+}
+
+.letra-l{
+    color: #72c154;
+}
+
+.letra-i{
+    color: #e2c756;
+}
+
+.letra-v{
+    color: #f99351;
+}
+
+.letra-e2{
+    color: #7d49c7;
+}
+
+
 .container-botoes{
     display: flex;
     gap: 30px;
