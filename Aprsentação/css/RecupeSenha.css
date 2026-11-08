@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    background-color: white;
+    font-family: helvetica, sans-serif;
+}
+
+.pagina-recuperacao {
+    box-sizing: border-box;
+    width: min(100% - 40px, 800px);
+    margin: 80px auto 0;
+}
+
+.pagina-recuperacao h2 {
+    margin: 0 0 24px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.container-recuperacao {
+    box-sizing: border-box;
+    width: min(100%, 520px);
+    min-height: 220px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 3px solid black;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-recuperacao {
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 320px);
+    gap: 10px;
+}
+
+.form-recuperacao input {
+    box-sizing: border-box;
+    height: 38px;
+    padding: 0 8px;
+    border: 1px solid black;
+    border-radius: 7px;
+    font: inherit;
+}
+
+.form-recuperacao button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    margin-top: 8px;
+    padding: 8px;
+    color: white;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 7px;
+    cursor: pointer;
+    font: inherit;
+}
+
+.form-recuperacao button:hover {
+    color: black;
+    background-color: white;
+}
+
+@media (max-width: 600px) {
+    .pagina-recuperacao {
+        margin-top: 40px;
+    }
+
+    .container-recuperacao {
+        padding: 28px 20px;
+    }
+}
