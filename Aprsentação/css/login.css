@@ -89,6 +89,16 @@ body{
     background-color: white;
 }
 
+.link-recuperar-senha {
+    align-self: center;
+    color: red;
+    text-decoration: none;
+}
+
+.link-recuperar-senha:hover {
+    text-decoration: underline;
+}
+
 .botoes-secundarios {
     display: flex;
     width: 100%;
