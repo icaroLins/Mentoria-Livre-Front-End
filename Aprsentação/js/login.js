@@ -35,39 +35,56 @@ document.addEventListener('keydown', (event) => {
 	}
 });
 
-// Valida o login do usuário.
-formularioLogin.addEventListener('submit', (event) => {
-	event.preventDefault();
-	const tipoAcesso = document.querySelector('#tipo-acesso').value;
-	const email = document.querySelector('#email').value.trim();
-	const senha = document.querySelector('#senha').value;
+```javascript
+// Realiza o login pela API.
+formularioLogin.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-	if (tipoAcesso === 'mentor') {
-		const mentorDados = JSON.parse(localStorage.getItem('mentorDados') || 'null');
+    const tipoAcesso = document.querySelector('#tipo-acesso').value;
+    const email = document.querySelector('#email').value.trim();
+    const senha = document.querySelector('#senha').value;
 
-		if (!mentorDados || mentorDados.email !== email || mentorDados.senha !== senha) {
-			alert('E-mail ou senha do mentor inválidos.');
-			return;
-		}
+    try {
+        const resposta = await fetch('http://localhost:8080/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                senha: senha
+            })
+        });
 
-		localStorage.setItem('tipoUsuario', tipoAcesso);
-		window.location.href = 'perfilMentor.html';
-		return;
-	}
+        const dados = await resposta.json();
 
-	if (tipoAcesso === 'mentorado') {
-		const mentoradoDados = JSON.parse(localStorage.getItem('mentoradoDados') || 'null');
+        if (!resposta.ok) {
+            throw new Error('E-mail ou senha incorretos.');
+        }
 
-		if (!mentoradoDados || mentoradoDados.email !== email || mentoradoDados.senha !== senha) {
-			alert('E-mail ou senha do mentorado inválidos.');
-			return;
-		}
+        const usuario = dados.usuario;
 
-		localStorage.setItem('tipoUsuario', tipoAcesso);
-		window.location.href = 'PerfilMentorado.html';
-		return;
-	}
+        // Verifica se o tipo de acesso selecionado corresponde ao usuário.
+        if (usuario.role !== tipoAcesso.toUpperCase()) {
+            throw new Error('Tipo de acesso incorreto.');
+        }
 
-	localStorage.setItem('tipoUsuario', tipoAcesso);
-	window.location.href = 'Mentorado-Mentorias.html';
+        // Salva os tokens e os dados do usuário.
+        localStorage.setItem('accessToken', dados.accessToken);
+        localStorage.setItem('refreshToken', dados.refreshToken);
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+        localStorage.setItem('tipoUsuario', tipoAcesso);
+
+        alert('Login realizado com sucesso!');
+
+        if (usuario.role === 'MENTOR') {
+            window.location.href = 'perfilMentor.html';
+        } else {
+            window.location.href = 'PerfilMentorado.html';
+        }
+
+    } catch (erro) {
+        alert('Erro ao realizar login: ' + erro.message);
+    }
 });
+```

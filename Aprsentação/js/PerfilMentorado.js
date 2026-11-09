@@ -33,21 +33,44 @@ if (inputFoto && fotoPerfil) {
 
 const formMentorado = document.getElementById('form-mentorado');
 
-// Salva o cadastro do mentorado e encaminha para o login.
 if (formMentorado) {
-    formMentorado.addEventListener('submit', (event) => {
+    formMentorado.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const dados = {
-            nome: document.getElementById('nome')?.value.trim() || '',
-            nascimento: document.getElementById('data-nascimento')?.value || '',
-            email: document.getElementById('email')?.value.trim() || '',
-            senha: document.getElementById('senha')?.value || ''
+            nome: document.getElementById('nome').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            senha: document.getElementById('senha').value,
+            dataNascimento: document.getElementById('data-nascimento').value,
+            role: 'MENTORADO',
+            especialidade: null,
+            objetivo: null
         };
 
-        localStorage.setItem('mentoradoDados', JSON.stringify(dados));
-        localStorage.removeItem('tipoUsuario');
-        window.location.href = 'login.html';
+        try {
+            const resposta = await fetch('http://localhost:8080/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dados)
+            });
+
+            const resultado = await resposta.json();
+
+            if (!resposta.ok) {
+                throw new Error(
+                    resultado.message || resultado.mensagem || 'Não foi possível realizar o cadastro.'
+                );
+            }
+
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = 'login.html';
+
+        } catch (erro) {
+            console.error('Erro no cadastro:', erro);
+            alert('Erro ao cadastrar: ' + erro.message);
+        }
     });
 }
 
