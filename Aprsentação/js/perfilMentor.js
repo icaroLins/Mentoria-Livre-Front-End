@@ -37,20 +37,43 @@ if (inputFoto && fotoPerfil) {
 const formMentor = document.getElementById('form-mentor');
 
 if (formMentor) {
-    formMentor.addEventListener('submit', (event) => {
+    formMentor.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const dados = {
-            nome: document.getElementById('nome')?.value.trim() || '',
-            area: document.getElementById('area')?.value.trim() || '',
-            email: document.getElementById('email')?.value.trim() || '',
-            nascimento: document.getElementById('nascimento')?.value || '',
-            senha: document.getElementById('senha')?.value || ''
+            nome: document.getElementById('nome').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            senha: document.getElementById('senha').value,
+            dataNascimento: document.getElementById('nascimento').value,
+            role: 'MENTOR',
+            especialidade: document.getElementById('area').value.trim(),
+            objetivo: null
         };
 
-        localStorage.setItem('mentorDados', JSON.stringify(dados));
-        localStorage.removeItem('tipoUsuario');
-        window.location.href = 'login.html';
+        try {
+            const resposta = await fetch('http://localhost:8080/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dados)
+            });
+
+            const resultado = await resposta.json();
+
+            if (!resposta.ok) {
+                throw new Error(
+                    resultado.message || resultado.mensagem || 'Não foi possível realizar o cadastro.'
+                );
+            }
+
+            alert('Cadastro de mentor realizado com sucesso!');
+            window.location.href = 'login.html';
+
+        } catch (erro) {
+            console.error('Erro no cadastro:', erro);
+            alert('Erro ao cadastrar: ' + erro.message);
+        }
     });
 }
 
