@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redefinição de Senha</title>
+    <title>Redefinir Senha</title>
     <link rel="stylesheet" href="css/cabecalho.css">
+    <link rel="stylesheet" href="css/RedefiniSenha.css">
     <script src="js/menu.js" defer></script>
+    <script src="js/RedefiniSenha.js" defer></script>
 </head>
 <body>
     <div class="container-cabeçalho">
@@ -29,6 +31,19 @@
     </div>
     </div>
     <hr>
-    
+
+    <main class="pagina-redefinicao">
+        <h2><span class="letra-r">R</span><span class="letra-e1">E</span>DEFINIR S<span class="letra-e2">E</span>NH<span class="letra-a">A</span></h2>
+        <p class="subtitulo-redefinicao">Crie uma nova senha para acessar sua conta.</p>
+        <section class="container-redefinicao" aria-label="Formulário de redefinição de senha">
+            <form class="form-redefinicao" id="form-redefinicao">
+                <label for="nova-senha">Nova Senha:</label>
+                <input type="password" id="nova-senha" name="nova-senha" autocomplete="new-password" required>
+                <label for="confirma-nova-senha">Confirma Nova Senha:</label>
+                <input type="password" id="confirma-nova-senha" name="confirma-nova-senha" autocomplete="new-password" required>
+                <button type="submit">Redefinir Senha</button>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

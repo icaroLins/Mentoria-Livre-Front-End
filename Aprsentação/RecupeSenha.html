@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/cabecalho.css">
     <link rel="stylesheet" href="css/RecupeSenha.css">
     <script src="js/menu.js" defer></script>
+    <script src="js/RecupeSenha.js" defer></script>
 </head>
 <body>
     <div class="container-cabeçalho">
@@ -34,7 +35,7 @@
     <main class="pagina-recuperacao">
         <h2><span class="letra-r">R</span><span class="letra-e1">E</span>CUP<span class="letra-e2">E</span><span class="letra-r">R</span><span class="letra-e1">E</span> SUA S<span class="letra-e2">E</span>NH<span class="letra-a">A</span></h2>
         <section class="container-recuperacao" aria-label="Formulário de recuperação de senha">
-            <form class="form-recuperacao">
+            <form class="form-recuperacao" id="form-recuperacao">
                 <label for="email-recuperacao">E-mail:</label>
                 <input type="email" id="email-recuperacao" name="email" autocomplete="email" required>
                 <button type="submit">Enviar Link De Recuperação</button>
